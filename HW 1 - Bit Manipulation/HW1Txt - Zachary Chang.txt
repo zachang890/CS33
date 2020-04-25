@@ -1,0 +1,33 @@
+Zachary Chang
+UID: 805289445
+
+HW 1
+2.71
+a. The code does not return negative values packed inside the 32-bit unsigned integer correctly.
+b.
+int xbyte(packed_t word, int bytenum)
+{
+    int shift = (3 - bytenum) << 3; //tell how much to left shift in order to move the chosen byte to the front
+    int result = word << shift; //perform the shift
+return result >> 24; //extend the sign of the most significant bit
+}
+
+
+2.82
+A. NO: ex. x = Tmin, y = 0
+     X < y --> 1, (-x > -y) --> 0 and 1 != 0
+
+B. YES: This equality is proven through shift multiplication.
+((x+y) << 4) + y – x
+(x+y)*16 + y – x
+17* y + 15 * x
+
+C. YES: 
+-(x+y) == ~(x+y) + 1 (by principle of converting to two’s complement)
+-x + -y == ~(x+y) + 1 (distribution)
+~x+1 + ~y+1 == ~(x+y) + 1 (by principle of converting to two’s complement)
+~x + ~y  + 1 == ~(x+y) (solve)
+
+D. YES: Both the unsigned and signed bit patterns remain the same, and the expression is therefore equivalent to (ux – uy) == -(uy – ux) which is always equal to 1.
+
+E. YES: Right shifting deletes the least significant bits, and the left shift always fills in zero and does not “recover” deleted bits that had value 1, so the resulting number would always be less than the number you started with.
