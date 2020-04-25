@@ -1,0 +1,24 @@
+Zachary Chang
+UID: 805289445
+
+
+HW 2 - Magic 8 Ball
+
+First notice that there are a total of 8 * 8 * 8 = 512 possible chars stored in this 3-D array. 
+
+1. Find the section of the memory that stores the index 3 (4th batch) of sets of 2-D arrays.
+We know that there are 8 total 2-D arrays, so to find index 3 (4th batch), we go down to 
+(3 * 8) + 1 = 25th line, which starts at address 0x7fffffffe0c0.
+
+2. Examine the 2-D array at 0x7fffffffe0c0
+This particular 2-D array starts at 0x7fffffffe0c0 and ends at 0x7fffffffe0f8.
+We want to find the 1-D array within this 2-D array that has index 4 (5th 1-D array).
+
+Counting 4 more rows down from 0x7fffffffe0c0, we find ourselves at 0x7fffffffe0e0, which is the 29th row, the row that we are looking for.
+
+On this row, we see the following data stored:
+0x7fffffffe0e0: 0x57 0x72 0x6f 0x6e 0x67 0x00 0x00 0x00 
+
+Little/Big Endian does not affect the ordering of the array, so now, referring to the ASCII table we can see that the output of magic8ball[3][4] would be the word:
+
+Wrong
